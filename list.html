@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twój List</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Ustawienie tła strony na gradient, z przejściem na skos i cieniem oddzielającym kolory */
+        body {
+            background: linear-gradient(135deg, #ff80ff 50%, #8a2be2 50%); /* Podział na 2 kolory */
+            background-size: 200% 200%;
+            background-position: left center;
+            filter: blur(0.1px);
+            animation: gradientShift 4s infinite; /* Animacja przejścia gradientu */
+            font-family: 'Arial', sans-serif; /* Czcionka */
+        }
+
+        /* Animacja przesuwania gradientu */
+        @keyframes gradientShift {
+            0% {
+                background-position: left center;
+            }
+            50% {
+                background-position: right center;
+            }
+            100% {
+                background-position: left center;
+            }
+        }
+
+        /* Efekt blur dla treści listu */
+        .blurred {
+            filter: blur(8px);
+            transition: filter 0.3s ease;
+        }
+
+        /* Styl dla przycisków (wszystkie mają ten sam kolor) */
+        button {
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: linear-gradient(to right, #6a5acd, #8a2be2); /* Niebiesko-fioletowy gradient */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        /* Efekt hover dla przycisków */
+        button:hover {
+            background: linear-gradient(to right, #8a2be2, #6a5acd); /* Zmiana gradientu przy hoverze */
+        }
+
+        /* Styl treści listu */
+        #letterContent {
+            color: #b17db1; /* Jaśniejszy fioletowy kolor tekstu */
+            font-weight: 600; /* Pogrubienie tekstu */
+            font-size: 18px; /* Większy rozmiar czcionki */
+            line-height: 1.8; /* Zwiększenie odstępów między wierszami */
+            letter-spacing: 0.5px; /* Rozstawienie liter */
+        }
+
+        /* Dodatkowa poprawka dla responsywności */
+        .container {
+            max-width: 800px;
+        }
+
+        /* Stylizacja nagłówka */
+        h2 {
+            color: #ff69b4; /* Różowy kolor dla nagłówka */
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Przycisk przekierowujący jest ukryty domyślnie */
+        #nextButton {
+            display: none;
+        }
+
+        /* Stylizacja cienia na linii oddzielającej gradienty */
+        .gradient-separator {
+            height: 2px;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Cień oddzielający gradienty */
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+    </style>
+    <script>
+        function revealContent() {
+            var content = document.getElementById('letterContent');
+            content.classList.remove('blurred');
+            document.getElementById('revealButton').style.display = 'none'; // Ukrycie przycisku "KLIKNIJ KASTI"
+            document.getElementById('nextButton').style.display = 'inline-block';  // Pokazuje przycisk do przekierowania
+        }
+
+        function redirectToKotki() {
+            window.location.href = 'kotki.html';  // Przekierowanie do kotki.html w tym samym folderze
+        }
+    </script>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="container mx-auto p-4">
+        <div class="bg-white p-8 rounded-2xl shadow-xl border border-pink-300 text-center">
+            <h2 class="mb-4">KICIUS NAPISALEM CI COS Z OKAZJI <br> ZBLIZAJACYCH SIE TWOICH 18 URODZIN (STARUSZKOO) 🙄🙄❤❤</h2>
+            <div class="gradient-separator"></div> <!-- Linia oddzielająca gradient -->
+            <p id="letterContent" class="blurred">
+                SKARBIE Z RACJI TEGO ZE SIE STARZEJESZ CHCIALBYM CI ZYCZYC WSZYSTKIEGO DOBREGO I CI PODZIEKOWAC ZA WSZYSTKO CO DLA MNIE ROBISZ,
+                ZACZNE CI KASTI OD ZYCZENIA TEGO, ABY TE BABY Z TWOJEJ SZKOLY WKONCU ZDECHLY (chodzi mi o karinke i babe z polskiego 😫😫) NASTEPNIE ABYS SIE JUZ NIE STRESOWALA KASTI TAK TA NAUKA
+                TYLKO BYLA PEWNIEJSZA SIEBIE (mowa glownie o matematyce i hiszpanskim 😔😔). DOBRA KASTI WYWALONE W TA SZKOLKE TO MAJA BYC FAJNE SLOWKA A NIE JAKIEŚ PRZYPOMINANIE O SZKOLCE 🙄🙄, TAKZE
+                KASTI ZYCZE CI ABY TWOJ NASTEPNY ROK ZYCIA OKAZAL SIE NAJLEPSZYM DOTAD. ZYCZE CI (MANIFESTUJE) ABYS SIE MNA NIGDY NIE ZNUDZILA KASTI I ABYSMY BYLI JUZ ZAWSZE RAZEM (CHCE BARDZO TEGO 🙏🙏❤),
+                ZYCZE NAM ABYSMY SIE JAK NAJSZYBCIEJ WYPROWADZILI NA SWOJE I ZAMIESZKALI RAZEM I ABYSMY SPALI RAZEM I SIE TULILI (i robilismy freaky rzeczy co wieczor 😝😝) YY TAK ❤❤ 
+                ZYCZE CI KICIUS ABY CIE RZADZIEJ BOLALA GLOWKA I BYS BYLA BARDZIEJ ZMECZONA I ABYS MIALA MNIEJ BOLESNE OKRESY 😭☹ I ABY CIE MOJE ANIME NIE PRZESTAWALY CIEKAWIC BHSSHHSHSH, 
+                ZYCZE CI SKARBIE GORY PIENIEDZY I ABY TWOJA MISIA SIE MIALA DOBRZE, ZYCZE CI ABYS NIE MUSIALA WIECEJ UKRYWAC NASZEGO ZWIAZKU, ZYCZE CI KICIUS WSZYSTKIEGO CZEGO TYLKO PRAGNIESZ
+                KOCHAM CIE BARDZO SIEROTKO MOJA MWAAAAA ❤❤❤ <br>
+                TAKZE CHCIALBYM CI PODZIEKOWAC ZA WSZYSTKO KICIUS CO DLA MNIE ROBISZ, DZIEKUJE KICIUS ZA TO ZE JESTES MOJA DZIEWCZYNA, DZIEKUJE CI ZA TO ZE MOGE BYC TWOIM CHLOPAKIEM KICIA ❤❤,
+                JESTES NAJLEPSZYM CO MOGLEM DOSTAC OD BOGA, JESTES CALYM MOIM SWIATEM KICIUS, PRZEPRASZAM ZE CZESTO DOPROWADZAM CIE DO LEZ, WIESZ DOBRZE ZE NIGDY PRZENIGDY NIE CHCIALEM TEGO UCZYNIC,
+                DZIEKUJE ZA TO, ZE SIE PRZY MNIE OTWIERASZ I MI POTRAFISZ ZAUFAC I ZE CZASAMI NA MNIE POLEGASZ. DZIEKUJE CI ZA WSZYSTKO KOCHANIE JESTES NAJLEPSZA, NAJSLODSZA, NAJUKOCHANSZA, NAJUROCZA, 
+                NAJFREAKOWATA. CHCE KICIUS CIE JUZ POSLUBIC I ZALOZYC Z TOBA RODZINE, CHCE Z TOBA SPAC W JEDNYM LOZECZKU, MIEC KOTKI, PIESKA (ZADNEJ CHIHUAHY 😭😭) CHCE Z TOBA GRAC W JEDNYM POKOIKU, 
+                CHCE ABYS MI SIEDZIALA NA KOLANKACH GDY BEDE WBIJAL RADIANTA, CHCE ABYS BYLA ZE MNA I PRZY MNIE JUZ NA ZAWSZE, DZIEKUJE ZA WSZYSTKO KICIA <br>
+                <text-center> KOCHAM CIE KOCHANIE MWAAA ❤❤❤</text-center>
+            </p>
+            <button id="revealButton" onclick="revealContent()">KLIKNIJ KASTI</button>
+            
+            <!-- Przycisk do przekierowania do kotki.html, pojawi się po ujawnieniu treści -->
+            <button id="nextButton" onclick="redirectToKotki()">KLIKAJJJJ!!!!</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMG</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Tło z animacją */
+        body {
+            background: linear-gradient(135deg, #ff80ff 30%, #8a2be2 30%); /* Ustawienie gradientu z widocznym fioletowym */
+            background-size: 200% 200%;
+            background-position: left bottom;
+            animation: gradientShift 8s ease-in-out infinite; /* Spowolniona animacja gradientu */
+            font-family: 'Arial', sans-serif;
+            height: 85vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Animacja gradientu */
+        @keyframes gradientShift {
+            0% {
+                background-position: left bottom;
+            }
+            60% {
+                background-position: left top; /* Fioletowy wychodzi wyżej */
+            }
+            100% {
+                background-position: left bottom; /* Magenta w dolnej części */
+            }
+        }
+
+        /* Stylizacja nagłówka */
+        h2 {
+            color: #ff69b4; /* Różowy kolor dla nagłówka */
+            font-size: 70px; /* Zmniejszony rozmiar czcionki */
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Stylizacja tekstu */
+        .question-text {
+            color: #b17db1; /* Jaśniejszy fioletowy kolor tekstu */
+            font-weight: 600; /* Pogrubienie tekstu */
+            font-size: 22px; /* Zmniejszony rozmiar czcionki */
+            line-height: 1.8; /* Zwiększenie odstępów między wierszami */
+            text-align: center;
+        }
+
+        /* Stylizacja gif */
+        .gif-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px; /* Zmniejszony odstęp */
+        }
+
+        /* Stylizacja dla kontenera z treścią (białe tło) */
+        .content-container {
+            background-color: white; /* Biała rubryka */
+            border-radius: 16px;
+            padding: 35px; /* Mniejsze wypełnienie */
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 80%;
+            max-width: 750px; /* Zmniejszony rozmiar */
+        }
+
+        /* Stylizacja przycisku powrotu */
+        .button {
+            background: linear-gradient(to right, #6a5acd, #8a2be2);
+            color: white;
+            padding: 8px 18px; /* Zmniejszone paddingi */
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px; /* Mniejsza czcionka przycisku */
+            font-weight: bold;
+            transition: background 0.3s ease;
+            margin-top: 15px; /* Mniejszy odstęp */
+        }
+
+        .button:hover {
+            background: linear-gradient(to right, #8a2be2, #6a5acd);
+        }
+
+        /* Stylizacja dla całej strony */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-container">
+            <h2>OMGG </h2>
+            <div class="gif-container">
+                <img src="https://media.tenor.com/q2dwVQejU-0AAAAM/kiss.gif" alt="OMG Kiss" width="350"> <!-- Zmniejszony gif -->
+            </div>
+            <p class="question-text">Czekam;33 ❤❤❤</p>
+
+            <!-- Przycisk powrotu do strony głównej -->
+            <a href="index.html"><button class="button">WRÓĆ DO STRONY GŁÓWNEJ</button></a>
+        </div>
+    </div>
+</body>
+</html>

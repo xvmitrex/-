@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona z hasłem</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff80ff 50%, #8a2be2 50%);
+            background-size: 200% 200%;
+            background-position: left center;
+            animation: gradientShift 4s infinite;
+            font-family: 'Arial', sans-serif;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: left center; }
+            50% { background-position: right center; }
+            100% { background-position: left center; }
+        }
+
+        .container {
+            max-width: 700px;
+        }
+
+        .content-box {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            margin-top: 40px;
+        }
+
+        h2 {
+            color: #ff69b4;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+        }
+
+        input {
+            padding: 8px;
+            border: 2px solid #8a2be2;
+            border-radius: 8px;
+            font-size: 18px;
+            width: 50%;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background: linear-gradient(to right, #6a5acd, #8a2be2);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #8a2be2, #6a5acd);
+        }
+
+        .hint {
+            margin-top: 15px;
+            color: #8a2be2;
+            font-size: 16px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script>
+        function checkPassword() {
+            var password = document.getElementById('password').value;
+            if (password === '140309') { // Podmień na odpowiednie hasło
+                window.location.href = 'pulpit.html';
+            } else {
+                alert('ZŁE HASŁO KASTRATTT 😪');
+            }
+        }
+    </script>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="container mx-auto">
+        <div class="content-box text-center">
+            <h2>KASTI WPISZ HASELKO ABY PRZEJSC DALEJ</h2>
+            <input type="password" id="password" placeholder="Wpisz hasłoo">
+            <br>
+            <button onclick="checkPassword()">WPISZ I KLIKNIJJ</button>
+            <div class="hint">💡 Haselko jest takie same jak te jakie masz na telefonie🥰🥰</div>
+        </div>
+    </div>
+</body>
+</html>
