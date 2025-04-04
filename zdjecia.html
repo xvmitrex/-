@@ -131,22 +131,6 @@
             background: linear-gradient(to right, #8a2be2, #6a5acd);
         }
 
-        /* Dostosowanie dla telefonów */
-        @media (max-width: 768px) {
-            h2 {
-                font-size: 16px; /* Mniejszy tekst nagłówka */
-            }
-
-            .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Większe zdjęcia na telefonach */
-            }
-
-            .reveal-button {
-                font-size: 12px;
-                padding: 8px 16px;
-            }
-        }
-
     </style>
 </head>
 <body>
@@ -156,13 +140,7 @@
 
         <!-- Siatka zdjęć -->
         <div class="gallery">
-            <img src="zdjecie1.jpg" alt="Zdjęcie 1" style="height: 200px;">
-            <img src="zdjecie2.jpg" alt="Zdjęcie 2" style="height: 180px;">
-            <img src="zdjecie3.jpg" alt="Zdjęcie 3" style="height: 250px;">
-            <img src="zdjecie4.jpg" alt="Zdjęcie 4" style="height: 230px;">
-            <img src="zdjecie5.jpg" alt="Zdjęcie 5" style="height: 210px;">
-            <img src="zdjecie6.jpg" alt="Zdjęcie 6" style="height: 270px;">
-            <img src="zdjecie7.jpg" alt="Zdjęcie 7" style="height: 220px;">
+            ${Array.from({length: 21}, (_, i) => `<img src="img${i+1}.jpg" alt="Zdjęcie ${i+1}" style="height: 200px;">`).join('\n')}
         </div>
 
         <!-- Przycisk do odkrywania zdjęć -->
@@ -175,10 +153,7 @@
 
     <script>
         function revealImages() {
-            // Usuwamy blur ze zdjęć
             document.querySelector('.gallery').classList.toggle('unblur');
-            
-            // Ukrywamy przycisk po kliknięciu
             document.querySelector('.reveal-button').style.display = 'none';
         }
     </script>
