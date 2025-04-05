@@ -4,132 +4,185 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twój List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&family=Cookie&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        /* Ustawienie tła strony na gradient, z przejściem na skos i cieniem oddzielającym kolory */
         body {
-            background: linear-gradient(135deg, #ff80ff 50%, #8a2be2 50%); /* Podział na 2 kolory */
+            background: linear-gradient(135deg, #ff007f 50%, #8000ff 50%);
             background-size: 200% 200%;
             background-position: left center;
-            filter: blur(0.1px);
-            animation: gradientShift 4s infinite; /* Animacja przejścia gradientu */
-            font-family: 'Arial', sans-serif; /* Czcionka */
+            animation: gradientShift 8s ease-in-out infinite;
+            font-family: 'Quicksand', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow-x: hidden;
         }
 
-        /* Animacja przesuwania gradientu */
         @keyframes gradientShift {
-            0% {
-                background-position: left center;
-            }
-            50% {
-                background-position: right center;
-            }
-            100% {
-                background-position: left center;
-            }
+            0% { background-position: left center; }
+            50% { background-position: right center; }
+            100% { background-position: left center; }
         }
 
-        /* Efekt blur dla treści listu */
+        .container {
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 700px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #revealButton {
+            margin-top: 25px;
+            padding: 18px 32px;
+            background: linear-gradient(to right, #ff9a8b, #ff80ff);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: 700;
+            transition: background 0.3s ease, transform 0.3s ease;
+            font-family: 'Quicksand', sans-serif;
+            text-transform: uppercase;
+        }
+
+        #revealButton:hover {
+            background: linear-gradient(to right, #ff80ff, #ff9a8b);
+            transform: scale(1.1);
+        }
+
+        h2 {
+            color: #ff69b4;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            font-family: 'Cookie', cursive;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #letterContent {
+            font-weight: 700;
+            font-size: 22px;
+            line-height: 1.8;
+            letter-spacing: 0.3px; /* zmniejszone z 1px */
+            text-align: left; /* zmienione z justify */
+            margin-bottom: 40px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            font-family: 'Quicksand', sans-serif;
+            transition: box-shadow 0.3s ease;
+            background-image: linear-gradient(to right, #ff9a8b, #ff80ff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        #letterContent:hover {
+            box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .emoji {
+            font-size: 30px;
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            color: initial !important;
+        }
+
         .blurred {
-            filter: blur(8px);
+            filter: blur(6px);
             transition: filter 0.3s ease;
         }
 
-        /* Styl dla przycisków (wszystkie mają ten sam kolor) */
-        button {
-            margin-top: 20px;
-            padding: 12px 24px;
-            background: linear-gradient(to right, #6a5acd, #8a2be2); /* Niebiesko-fioletowy gradient */
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            transition: background 0.3s ease;
+        .gradient-separator {
+            height: 3px;
+            background: rgba(255, 255, 255, 0.2);
+            margin-top: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* Efekt hover dla przycisków */
-        button:hover {
-            background: linear-gradient(to right, #8a2be2, #6a5acd); /* Zmiana gradientu przy hoverze */
-        }
-
-        /* Styl treści listu */
-        #letterContent {
-            color: #b17db1; /* Jaśniejszy fioletowy kolor tekstu */
-            font-weight: 600; /* Pogrubienie tekstu */
-            font-size: 18px; /* Większy rozmiar czcionki */
-            line-height: 1.8; /* Zwiększenie odstępów między wierszami */
-            letter-spacing: 0.5px; /* Rozstawienie liter */
-        }
-
-        /* Dodatkowa poprawka dla responsywności */
-        .container {
-            max-width: 800px;
-        }
-
-        /* Stylizacja nagłówka */
-        h2 {
-            color: #ff69b4; /* Różowy kolor dla nagłówka */
-            font-size: 26px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        /* Przycisk przekierowujący jest ukryty domyślnie */
         #nextButton {
             display: none;
+            padding: 18px 32px;
+            background: linear-gradient(to right, #ff9a8b, #ff80ff);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 22px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 40px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, background 0.3s ease;
+            font-family: 'Quicksand', sans-serif;
         }
 
-        /* Stylizacja cienia na linii oddzielającej gradienty */
-        .gradient-separator {
-            height: 2px;
-            background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Cień oddzielający gradienty */
-            margin-top: 20px;
-            margin-bottom: 20px;
+        #nextButton:hover {
+            background: linear-gradient(to right, #ff80ff, #ff9a8b);
+            transform: scale(1.1);
         }
 
+        @media (max-width: 768px) {
+            h2 { font-size: 30px; }
+            #letterContent { font-size: 18px; }
+            #revealButton, #nextButton {
+                padding: 14px 28px;
+                font-size: 18px;
+            }
+        }
     </style>
     <script>
         function revealContent() {
             var content = document.getElementById('letterContent');
             content.classList.remove('blurred');
-            document.getElementById('revealButton').style.display = 'none'; // Ukrycie przycisku "KLIKNIJ KASTI"
-            document.getElementById('nextButton').style.display = 'inline-block';  // Pokazuje przycisk do przekierowania
+            document.getElementById('revealButton').style.display = 'none';
+            document.getElementById('nextButton').style.display = 'inline-block';
         }
 
         function redirectToKotki() {
-            window.location.href = 'kotki.html';  // Przekierowanie do kotki.html w tym samym folderze
+            window.location.href = 'kotki.html';
         }
     </script>
 </head>
-<body class="flex items-center justify-center min-h-screen">
-    <div class="container mx-auto p-4">
-        <div class="bg-white p-8 rounded-2xl shadow-xl border border-pink-300 text-center">
-            <h2 class="mb-4">KICIUS NAPISALEM CI COS Z OKAZJI <br> ZBLIZAJACYCH SIE TWOICH 18 URODZIN (STARUSZKOO) 🙄🙄❤❤</h2>
-            <div class="gradient-separator"></div> <!-- Linia oddzielająca gradient -->
-            <p id="letterContent" class="blurred">
-                SKARBIE Z RACJI TEGO ZE SIE STARZEJESZ CHCIALBYM CI ZYCZYC WSZYSTKIEGO DOBREGO I CI PODZIEKOWAC ZA WSZYSTKO CO DLA MNIE ROBISZ,
-                ZACZNE CI KASTI OD ZYCZENIA TEGO, ABY TE BABY Z TWOJEJ SZKOLY WKONCU ZDECHLY (chodzi mi o karinke i babe z polskiego 😫😫) NASTEPNIE ABYS SIE JUZ NIE STRESOWALA KASTI TAK TA NAUKA
-                TYLKO BYLA PEWNIEJSZA SIEBIE (mowa glownie o matematyce i hiszpanskim 😔😔). DOBRA KASTI WYWALONE W TA SZKOLKE TO MAJA BYC FAJNE SLOWKA A NIE JAKIEŚ PRZYPOMINANIE O SZKOLCE 🙄🙄, TAKZE
-                KASTI ZYCZE CI ABY TWOJ NASTEPNY ROK ZYCIA OKAZAL SIE NAJLEPSZYM DOTAD. ZYCZE CI (MANIFESTUJE) ABYS SIE MNA NIGDY NIE ZNUDZILA KASTI I ABYSMY BYLI JUZ ZAWSZE RAZEM (CHCE BARDZO TEGO 🙏🙏❤),
-                ZYCZE NAM ABYSMY SIE JAK NAJSZYBCIEJ WYPROWADZILI NA SWOJE I ZAMIESZKALI RAZEM I ABYSMY SPALI RAZEM I SIE TULILI (i robilismy freaky rzeczy co wieczor 😝😝) YY TAK ❤❤ 
-                ZYCZE CI KICIUS ABY CIE RZADZIEJ BOLALA GLOWKA I BYS BYLA BARDZIEJ ZMECZONA I ABYS MIALA MNIEJ BOLESNE OKRESY 😭☹ I ABY CIE MOJE ANIME NIE PRZESTAWALY CIEKAWIC BHSSHHSHSH, 
-                ZYCZE CI SKARBIE GORY PIENIEDZY I ABY TWOJA MISIA SIE MIALA DOBRZE, ZYCZE CI ABYS NIE MUSIALA WIECEJ UKRYWAC NASZEGO ZWIAZKU, ZYCZE CI KICIUS WSZYSTKIEGO CZEGO TYLKO PRAGNIESZ
-                KOCHAM CIE BARDZO SIEROTKO MOJA MWAAAAA ❤❤❤ <br>
-                TAKZE CHCIALBYM CI PODZIEKOWAC ZA WSZYSTKO KICIUS CO DLA MNIE ROBISZ, DZIEKUJE KICIUS ZA TO ZE JESTES MOJA DZIEWCZYNA, DZIEKUJE CI ZA TO ZE MOGE BYC TWOIM CHLOPAKIEM KICIA ❤❤,
-                JESTES NAJLEPSZYM CO MOGLEM DOSTAC OD BOGA, JESTES CALYM MOIM SWIATEM KICIUS, PRZEPRASZAM ZE CZESTO DOPROWADZAM CIE DO LEZ, WIESZ DOBRZE ZE NIGDY PRZENIGDY NIE CHCIALEM TEGO UCZYNIC,
-                DZIEKUJE ZA TO, ZE SIE PRZY MNIE OTWIERASZ I MI POTRAFISZ ZAUFAC I ZE CZASAMI NA MNIE POLEGASZ. DZIEKUJE CI ZA WSZYSTKO KOCHANIE JESTES NAJLEPSZA, NAJSLODSZA, NAJUKOCHANSZA, NAJUROCZA, 
-                NAJFREAKOWATA. CHCE KICIUS CIE JUZ POSLUBIC I ZALOZYC Z TOBA RODZINE, CHCE Z TOBA SPAC W JEDNYM LOZECZKU, MIEC KOTKI, PIESKA (ZADNEJ CHIHUAHY 😭😭) CHCE Z TOBA GRAC W JEDNYM POKOIKU, 
-                CHCE ABYS MI SIEDZIALA NA KOLANKACH GDY BEDE WBIJAL RADIANTA, CHCE ABYS BYLA ZE MNA I PRZY MNIE JUZ NA ZAWSZE, DZIEKUJE ZA WSZYSTKO KICIA <br>
-                <text-center> KOCHAM CIE KOCHANIE MWAAA ❤❤❤</text-center>
-            </p>
-            <button id="revealButton" onclick="revealContent()">KLIKNIJ KASTI</button>
-            
-            <!-- Przycisk do przekierowania do kotki.html, pojawi się po ujawnieniu treści -->
-            <button id="nextButton" onclick="redirectToKotki()">KLIKAJJJJ!!!!</button>
-        </div>
+<body>
+    <div class="container">
+        <h2>
+            KICIUS NAPISALEM CI COS Z OKAZJI <br>
+            ZBLIZAJACYCH SIE TWOICH 18 URODZIN (STARUSZKOO)
+            <span class="emoji">🙄🙄</span><span class="emoji">❤️❤️</span>
+        </h2>
+        <button id="revealButton" onclick="revealContent()">KLIKNIJ KASTI</button>
+        <div class="gradient-separator"></div>
+
+        <p id="letterContent" class="blurred">
+            SKARBIE Z RACJI TEGO ZE SIE STARZEJESZ CHCIALBYM CI ZYCZYC WSZYSTKIEGO DOBREGO I CI PODZIEKOWAC ZA WSZYSTKO CO DLA MNIE ROBISZ,
+            ZACZNE CI KASTI OD ZYCZENIA TEGO, ABY TE BABY Z TWOJEJ SZKOLY WKONCU ZDECHLY (karinka i baba z polskiego
+            <span class="emoji">😫😫</span>) ABYS SIE NIE STRESOWALA KASTI TYLKO BYLA PEWNIEJSZA SIEBIE (matma, hiszpanski
+            <span class="emoji">😔😔</span>). DOBRA KASTI WYWALONE W TA SZKOLKE TO MAJA BYC FAJNE SLOWKA A NIE O SZKOLCE
+            <span class="emoji">🙄🙄</span>. KASTI ZYCZE CI ABY TEN ROK BYL NAJLEPSZY, ABYSMY BYLI ZAWSZE RAZEM
+            <span class="emoji">🙏🙏❤️</span>, ABYSMY ZAMIESZKALI RAZEM I TULILI SIE CODZIENNIE (i robilismy freaky rzeczy
+            <span class="emoji">😝😝</span>) YY TAK <span class="emoji">❤️❤️</span>. ZYCZE CI ABY CIE MNIEJ BOLALA GLOWKA, LZEJSZE OKRESY
+            <span class="emoji">😭☹️</span>, ABY MOJE ANIME CIE NIE PRZESTAWALO CIEKAWIC BHSSHHSHSH. ZYCZE GÓRY PIENIĘDZY, ABY TWOJA MISIA MIALA DOBRZE, ABYŚ NIE MUSIALA UKRYWAC NAS. ZYCZE CI KICIUS WSZYSTKIEGO CZEGO PRAGNIESZ KOCHAM CIE
+            <span class="emoji">❤️❤️❤️</span><br><br>
+            DZIEKUJE ZE JESTES MOJA DZIEWCZYNA, ZE MOGE BYC TWOIM CHLOPAKIEM <span class="emoji">❤️❤️</span>, JESTES NAJLEPSZYM CO DOSTALEM OD BOGA, JESTES CAŁYM MOIM ŚWIATEM. PRZEPRASZAM ZA WSZYSTKIE ŁZY – NIGDY TEGO NIE CHCIALEM. DZIEKUJE ZA ZAUFANIE I ZA TO ZE MI UFAJESZ. JESTES NAJSLODSZA, NAJUKOCHANSZA, NAJFREAKOWATA. CHCE CIE POSLUBIC I MIEC Z TOBA RODZINE. CHCE Z TOBA SPAC, MIEC KOTKI, PIESKA (ALE NIE CHIHUAHE
+            <span class="emoji">😭😭</span>), CHCE Z TOBA GRAC, ABYŚ MI SIEDZIALA NA KOLANKACH GDY WBIJAM RADIANTA.
+            CHCE ABYS BYLA ZE MNA I PRZY MNIE JUZ NA ZAWSZE, DZIEKUJE ZA WSZYSTKO KICIA 
+            <br> <text-center> KOCHAM CIE KOCHANIE MWAAA <span class="emoji">  ❤️❤️❤️</span> </text-center> 
+        </p>
+
+        <button id="nextButton" onclick="redirectToKotki()">KLIKAJJJJ!!!!</button>
     </div>
 </body>
 </html>
