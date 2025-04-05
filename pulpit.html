@@ -35,7 +35,6 @@
       border-radius: 1rem;
       font-weight: bold;
       transition: background 0.3s ease, transform 0.2s ease;
-      margin: 0.3rem;
       text-align: center;
       font-size: 1rem;
       min-width: 120px;
@@ -50,14 +49,16 @@
 <body>
   <div class="w-full max-w-sm sm:max-w-md bg-white px-4 py-6 rounded-2xl shadow-md text-center">
     <h1 class="text-xl sm:text-2xl font-bold text-purple-700 leading-snug">HEJCIA KICIUS</h1>
-    <p class="text-purple-500 font-medium mt-2 mb-4 text-base leading-relaxed">
+    <p class="text-purple-500 font-medium mt-2 mb-6 text-base leading-relaxed">
       WYBIERZ CO CHCESZ<br />ZOBACZYĆC 🥰🥰
     </p>
 
-    <div class="flex flex-col sm:flex-row justify-center items-center flex-wrap gap-3">
+    <div class="grid grid-cols-2 gap-4 justify-items-center">
       <a href="zdjecia.html" class="btn">ZDJECIA <span>😊❤</span></a>
       <a href="list.html" class="btn">LISCIKK <span>🥰❤</span></a>
-      <a href="wierszyk.html" class="btn">WIERSZYK <span>😢❤</span></a>
+      <div class="col-span-2 flex justify-center">
+        <a href="wierszyk.html" class="btn">WIERSZYK <span>😢❤</span></a>
+      </div>
     </div>
   </div>
 </body>
