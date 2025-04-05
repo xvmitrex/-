@@ -13,7 +13,8 @@
             background-position: left bottom;
             animation: gradientShift 8s ease-in-out infinite; /* Spowolniona animacja gradientu */
             font-family: 'Arial', sans-serif;
-            height: 85vh;
+            height: 100vh;
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -35,7 +36,7 @@
         /* Stylizacja nagłówka */
         h2 {
             color: #ff69b4; /* Różowy kolor dla nagłówka */
-            font-size: 70px; /* Zmniejszony rozmiar czcionki */
+            font-size: 5vw; /* Zmniejszający się rozmiar czcionki zależnie od szerokości ekranu */
             font-weight: bold;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -45,7 +46,7 @@
         .question-text {
             color: #b17db1; /* Jaśniejszy fioletowy kolor tekstu */
             font-weight: 600; /* Pogrubienie tekstu */
-            font-size: 22px; /* Zmniejszony rozmiar czcionki */
+            font-size: 4vw; /* Zmniejszony rozmiar czcionki */
             line-height: 1.8; /* Zwiększenie odstępów między wierszami */
             text-align: center;
         }
@@ -61,22 +62,22 @@
         .content-container {
             background-color: white; /* Biała rubryka */
             border-radius: 16px;
-            padding: 35px; /* Mniejsze wypełnienie */
+            padding: 20px; /* Mniejsze wypełnienie */
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
-            width: 80%;
-            max-width: 750px; /* Zmniejszony rozmiar */
+            width: 80%; /* 80% szerokości */
+            max-width: 700px; /* Zmniejszony rozmiar */
         }
 
         /* Stylizacja przycisku powrotu */
         .button {
             background: linear-gradient(to right, #6a5acd, #8a2be2);
             color: white;
-            padding: 8px 18px; /* Zmniejszone paddingi */
+            padding: 10px 20px; /* Zwiększony padding */
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 13px; /* Mniejsza czcionka przycisku */
+            font-size: 3vw; /* Dostosowanie rozmiaru czcionki do urządzeń */
             font-weight: bold;
             transition: background 0.3s ease;
             margin-top: 15px; /* Mniejszy odstęp */
@@ -92,6 +93,8 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
@@ -100,7 +103,7 @@
         <div class="content-container">
             <h2>OMGG </h2>
             <div class="gif-container">
-                <img src="https://media.tenor.com/q2dwVQejU-0AAAAM/kiss.gif" alt="OMG Kiss" width="350"> <!-- Zmniejszony gif -->
+                <img src="https://media.tenor.com/q2dwVQejU-0AAAAM/kiss.gif" alt="OMG Kiss" width="70%"> <!-- Zmieniony rozmiar GIFa -->
             </div>
             <p class="question-text">Czekam;33 ❤❤❤</p>
 
