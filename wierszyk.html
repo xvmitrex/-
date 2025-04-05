@@ -1,234 +1,179 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Twój List</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&family=Cookie&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        /* Tło gradientowe z animacją */
-        body {
-            background: linear-gradient(135deg, #ff007f 50%, #8000ff 50%);
-            background-size: 200% 200%;
-            background-position: left center;
-            animation: gradientShift 8s ease-in-out infinite;
-            font-family: 'Quicksand', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-            overflow-x: hidden;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Twój List</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&family=Cookie&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff007f 50%, #8000ff 50%);
+      background-size: 200% 200%;
+      background-position: left center;
+      animation: gradientShift 8s ease-in-out infinite, colorShadow 8s ease-in-out infinite;
+      font-family: 'Quicksand', sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
 
-        /* Animacja gradientu */
-        @keyframes gradientShift {
-            0% {
-                background-position: left center;
-            }
-            50% {
-                background-position: right center;
-            }
-            100% {
-                background-position: left center;
-            }
-        }
+    @keyframes gradientShift {
+      0%, 100% {
+        background-position: left center;
+      }
+      50% {
+        background-position: right center;
+      }
+    }
 
-        /* Styl kontenera */
-        .container {
-            background-color: rgba(255, 255, 255, 0.85);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.15);
-            width: 100%;
-            max-width: 700px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+    @keyframes colorShadow {
+      0%, 100% {
+        box-shadow: 0 10px 25px rgba(255, 0, 127, 0.5);
+      }
+      50% {
+        box-shadow: 0 10px 35px rgba(128, 0, 255, 0.5);
+      }
+    }
 
-        /* Przycisk do ujawniania treści */
-        #revealButton {
-            margin-top: 25px;
-            padding: 18px 32px;
-            background: linear-gradient(to right, #ff9a8b, #ff80ff);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 20px;
-            font-weight: 700;
-            transition: background 0.3s ease, transform 0.3s ease;
-            font-family: 'Quicksand', sans-serif;
-            text-transform: uppercase;
-        }
+    .container {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      max-width: 700px;
+      width: 100%;
+      text-align: center;
+    }
 
-        #revealButton:hover {
-            background: linear-gradient(to right, #ff80ff, #ff9a8b);
-            transform: scale(1.1);
-        }
+    h2 {
+      color: #ff69b4;
+      font-size: 2.25rem;
+      font-family: 'Cookie', cursive;
+      margin-bottom: 1.5rem;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+    }
 
-        /* Styl nagłówka */
-        h2 {
-            color: #ff69b4;
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 30px;
-            letter-spacing: 3px;
-            font-family: 'Cookie', cursive;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
-        }
+    #letterContent {
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.8;
+      letter-spacing: 0.5px;
+      text-align: justify;
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 0.75rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      background-image: linear-gradient(to right, #ff9a8b, #ff80ff);
+      -webkit-background-clip: text;
+      color: transparent;
+      transition: box-shadow 0.3s ease;
+    }
 
-        /* Styl tekstu */
-        #letterContent {
-            font-weight: 700; /* Pogrubienie */
-            font-size: 22px;
-            line-height: 1.8;
-            letter-spacing: 1px;
-            text-align: justify;
-            margin-bottom: 40px;
-            padding: 15px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-            font-family: 'Quicksand', sans-serif;
-            transition: box-shadow 0.3s ease;
-            background-image: linear-gradient(to right, #ff9a8b, #ff80ff); /* Gradient w tle */
-            -webkit-background-clip: text; /* Wykorzystanie tła w tekście */
-            color: transparent; /* Ukrycie koloru tekstu, bo używamy tła */
-        }
+    #letterContent:hover {
+      box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+    }
 
-        #letterContent:hover {
-            box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
-        }
+    .blurred {
+      filter: blur(6px);
+      transition: filter 0.3s ease;
+    }
 
-        /* Blurred effect */
-        .blurred {
-            filter: blur(6px);
-            transition: filter 0.3s ease;
-        }
+    .gradient-separator {
+      height: 3px;
+      background: rgba(255, 255, 255, 0.2);
+      margin: 2rem 0;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
 
-        /* Linia oddzielająca */
-        .gradient-separator {
-            height: 3px;
-            background: rgba(255, 255, 255, 0.2);
-            margin-top: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-        }
+    .button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: linear-gradient(to right, #ff9a8b, #ff80ff);
+      color: white;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 1.125rem;
+      border: none;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, background 0.3s ease;
+      font-family: 'Quicksand', sans-serif;
+    }
 
-        /* Uwypuklenie przycisku */
-        #nextButton {
-            display: none;
-            padding: 18px 32px;
-            background: linear-gradient(to right, #ff9a8b, #ff80ff);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 22px;
-            font-weight: 700;
-            text-transform: uppercase;
-            cursor: pointer;
-            margin-top: 40px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, background 0.3s ease;
-            font-family: 'Quicksand', sans-serif;
-        }
+    .button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(to right, #ff80ff, #ff9a8b);
+    }
 
-        #nextButton:hover {
-            background: linear-gradient(to right, #ff80ff, #ff9a8b);
-            transform: scale(1.1);
-        }
+    #nextButton {
+      display: none;
+    }
 
-        /* Responsywność */
-        @media (max-width: 768px) {
-            h2 {
-                font-size: 30px;
-            }
+    .italic-text {
+      font-style: italic;
+      font-size: 1rem;
+    }
 
-            #letterContent {
-                font-size: 18px;
-            }
+    @media (max-width: 500px) {
+      h2 {
+        font-size: 1.75rem;
+      }
 
-            #revealButton, #nextButton {
-                padding: 14px 28px;
-                font-size: 18px;
-            }
-        }
+      #letterContent {
+        font-size: 0.95rem;
+      }
 
-        /* Zwiększenie cienia przy zderzaniu kolorów */
-        body {
-            background: linear-gradient(135deg, #ff007f 50%, #8000ff 50%);
-            background-size: 200% 200%;
-            background-position: left center;
-            animation: gradientShift 8s ease-in-out infinite, colorShadow 8s ease-in-out infinite;
-        }
+      .button {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+      }
+    }
+  </style>
+  <script>
+    function revealContent() {
+      document.getElementById('letterContent').classList.remove('blurred');
+      document.getElementById('revealButton').style.display = 'none';
+      document.getElementById('nextButton').style.display = 'inline-block';
+    }
 
-        /* Dodanie cienia w miejscu zderzenia kolorów */
-        @keyframes colorShadow {
-            0% {
-                background-position: left center;
-                box-shadow: 0 10px 25px rgba(255, 0, 127, 0.5);
-            }
-            50% {
-                background-position: right center;
-                box-shadow: 0 10px 35px rgba(128, 0, 255, 0.5);
-            }
-            100% {
-                background-position: left center;
-                box-shadow: 0 10px 25px rgba(255, 0, 127, 0.5);
-            }
-        }
-
-        /* Styl kursywy tylko od określonego miejsca */
-        .italic-text {
-            font-style: italic;
-            font-size: 20px; /* Minimalna kursywa */
-        }
-    </style>
-    <script>
-        function revealContent() {
-            var content = document.getElementById('letterContent');
-            content.classList.remove('blurred');
-            document.getElementById('revealButton').style.display = 'none';
-            document.getElementById('nextButton').style.display = 'inline-block';
-        }
-
-        function redirectToKotki() {
-            window.location.href = 'kotki.html';
-        }
-    </script>
+    function redirectToKotki() {
+      window.location.href = 'kotki.html';
+    }
+  </script>
 </head>
 <body>
-    <div class="container">
-        <h2>HEJKA KASTII 🙄🙄❤❤</h2>
-        <!-- Przycisk umieszczony w centralnym miejscu -->
-        <button id="revealButton" onclick="revealContent()">KLIKNIJ KASTI</button>
-        <div class="gradient-separator"></div>
-
-        <p id="letterContent" class="blurred">
-            CHCIALBYM CI JESZCZE RAZ ZYCZYC WSZYSTKIEGO NAJLEPSZEGO KOCHANIE 🥰🥰❤ I NAPISALEM
-            DLA CIEBIE WIERSZYK 😓🙏❤. <br>
-            <span class="italic-text"> KOCHANY BOBASKU KTORY MNIE PREZENCIKAMI I DOTYKIEM ROZPIESZCZA, A W NOCY SIE PRZY MNIE ODPREZA,
-                NA KTOREJ OBECNOSC ZYCIE NABIERA ZNACZENIA, NAJUKOCHANSZA I NAJSLODSZA, MA DZIS SWE
-                18 URODZINKI, WIEC WRAZ Z MOIM SERDUSZKIEM NALEZACYM DO CIEBIE ZYCZE CI DZIS, ABYS ZAWSZE SIE USMIECHALA,
-                A W SERCU ZAWSZE MNIE MOCNO TRZYMALA, BY TWOJE MARZENIA JEDEN PO DRUGIM SIE SPELNIALY,
-                A WSZYSTKIE SMUTKI PRZY MNIE CIE OMIJALY, PRZY TOBIE NAWET KAWA BEZ CUKRU JEST SLODZIUTKA,
-                BO TE TWOJE OCZKA TO NAJLEPSZA NA SWIECIE SLODKOSCI ROZPUSTA, GDY MNIE PRZYTULASZ TO TAK
-                JAKBY CALY SWIAT SIE ZATRZYMYWAL, JAKBY WSZYSTKIE PROBLEMY ZNIKALY I TYLKO MY SAMI ISTNIELI,
-                NASZE SERDUSZKA PRZY SOBIE TWORZA NAJPIEKNIEJSZA MELODIE, A KAZDE TWOJE "KOCHAM" JEST 
-                DLA MNIE JAK NAGRODA, A KAZDY TWOJ DOTYK TO DLA MNIE NAJWIESZY SKARB,
-                NA ZAWSZE Z TOBA CHCE PRZEJSC PRZEZ ZYCIE TRZYMAJAC CIE ZA REKE,
-                BO Z TOBA KAZDY KROK JEST PIEKNY, A SERDUSZKO MOJE BIJE TYLKO DLA CIEBIE, Z TOBA KAZDY DZIEN JEST LEPSZY,
-                A SWIAT CUDOWNIEJSZY, NA SWIECIE NIE MA NIC CENNIEJSZEGO NIZ TY, 
-                MOJ KOCHANY SKARBIE, Z TOBA CHCE PRZEJSC PRZEZ WSZYSTKO NOSZAC CIE NA MOICH RAMIONACH, 
-                WSZYSTKIEGO NAJLEPSZEGO KICIUS, I PAMIETAJ, ZE ZA KAZDA TWOJA RADOSNA WIADOMOSCIA,
-                KRYJE SIE CALY MOJ SWIAT, KOCHAM CIE BARDZO KICIUS SKARBIE KOCHANIE I JUZ BEDE WIECZNE MWAAA❤❤❤
-        </p>
-
-        <button id="nextButton" onclick="redirectToKotki()">KLIKAJJJJ!!!!</button>
-    </div>
+  <div class="container">
+    <h2>HEJKA KASTII 🙄🙄❤❤</h2>
+    <button id="revealButton" class="button" onclick="revealContent()">KLIKNIJ KASTI</button>
+    <div class="gradient-separator"></div>
+    <p id="letterContent" class="blurred">
+      CHCIALBYM CI JESZCZE RAZ ZYCZYC WSZYSTKIEGO NAJLEPSZEGO KOCHANIE 🥰🥰❤ I NAPISALEM
+      DLA CIEBIE WIERSZYK 😓🙏❤. <br />
+      <span class="italic-text">
+        KOCHANY BOBASKU KTORY MNIE PREZENCIKAMI I DOTYKIEM ROZPIESZCZA, A W NOCY SIE PRZY MNIE ODPREZA,
+        NA KTOREJ OBECNOSC ZYCIE NABIERA ZNACZENIA, NAJUKOCHANSZA I NAJSLODSZA, MA DZIS SWE
+        18 URODZINKI, WIEC WRAZ Z MOIM SERDUSZKIEM NALEZACYM DO CIEBIE ZYCZE CI DZIS, ABYS ZAWSZE SIE USMIECHALA,
+        A W SERCU ZAWSZE MNIE MOCNO TRZYMALA, BY TWOJE MARZENIA JEDEN PO DRUGIM SIE SPELNIALY,
+        A WSZYSTKIE SMUTKI PRZY MNIE CIE OMIJALY, PRZY TOBIE NAWET KAWA BEZ CUKRU JEST SLODZIUTKA,
+        BO TE TWOJE OCZKA TO NAJLEPSZA NA SWIECIE SLODKOSCI ROZPUSTA, GDY MNIE PRZYTULASZ TO TAK
+        JAKBY CALY SWIAT SIE ZATRZYMYWAL, JAKBY WSZYSTKIE PROBLEMY ZNIKALY I TYLKO MY SAMI ISTNIELI,
+        NASZE SERDUSZKA PRZY SOBIE TWORZA NAJPIEKNIEJSZA MELODIE, A KAZDE TWOJE "KOCHAM" JEST 
+        DLA MNIE JAK NAGRODA, A KAZDY TWOJ DOTYK TO DLA MNIE NAJWIESZY SKARB,
+        NA ZAWSZE Z TOBA CHCE PRZEJSC PRZEZ ZYCIE TRZYMAJAC CIE ZA REKE,
+        BO Z TOBA KAZDY KROK JEST PIEKNY, A SERDUSZKO MOJE BIJE TYLKO DLA CIEBIE, Z TOBA KAZDY DZIEN JEST LEPSZY,
+        A SWIAT CUDOWNIEJSZY, NA SWIECIE NIE MA NIC CENNIEJSZEGO NIZ TY, 
+        MOJ KOCHANY SKARBIE, Z TOBA CHCE PRZEJSC PRZEZ WSZYSTKO NOSZAC CIE NA MOICH RAMIONACH, 
+        WSZYSTKIEGO NAJLEPSZEGO KICIUS, I PAMIETAJ, ZE ZA KAZDA TWOJA RADOSNA WIADOMOSCIA,
+        KRYJE SIE CALY MOJ SWIAT, KOCHAM CIE BARDZO KICIUS SKARBIE KOCHANIE I JUZ BEDE WIECZNE MWAAA❤❤❤
+      </span>
+    </p>
+    <button id="nextButton" class="button" onclick="redirectToKotki()">KLIKAJJJJ!!!!</button>
+  </div>
 </body>
 </html>
