@@ -3,92 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estetyczna Strona</title>
+    <title>Hejka Kicius</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        /* Ustawienie tła strony na gradient, z przejściem na skos */
         body {
-            background: linear-gradient(135deg, #ff80ff 50%, #8a2be2 50%); /* Podział na 2 kolory */
+            background: linear-gradient(135deg, #ff80ff 50%, #8a2be2 50%);
             background-size: 200% 200%;
             background-position: left center;
-            animation: gradientShift 6s ease-in-out infinite; /* Animacja przejścia gradientu */
-            font-family: 'Arial', sans-serif; /* Czcionka */
-            height: 100vh;
+            animation: gradientShift 6s ease-in-out infinite;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0;
+            padding: 1rem;
         }
 
-        /* Animacja przesuwania gradientu */
         @keyframes gradientShift {
-            0% {
-                background-position: left center;
-            }
-            50% {
-                background-position: right center;
-            }
-            100% {
-                background-position: left center;
-            }
+            0% { background-position: left center; }
+            50% { background-position: right center; }
+            100% { background-position: left center; }
         }
 
-        /* Styl dla przycisków */
-        a {
+        .btn {
             display: inline-block;
-            background: linear-gradient(to right, #6a5acd, #8a2be2); /* Gradient przycisku */
+            background: linear-gradient(to right, #6a5acd, #8a2be2);
             color: white;
-            padding: 12px 24px;
+            padding: 0.75rem 1.5rem;
             text-decoration: none;
-            border-radius: 50px; /* Zaokrąglone przyciski */
+            border-radius: 9999px;
             font-weight: bold;
             transition: background 0.3s ease, transform 0.2s ease;
-        }
-
-        /* Efekt hover dla przycisków */
-        a:hover {
-            background: linear-gradient(to right, #8a2be2, #6a5acd); /* Zmiana gradientu przy hoverze */
-            transform: scale(1.05); /* Lekka animacja powiększenia */
-        }
-
-        /* Stylizacja białego kontenera */
-        .container {
-            width: 100%;
-            max-width: 600px;
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 0.5rem;
+            min-width: 100px;
             text-align: center;
         }
 
-        /* Stylizacja nagłówka */
-        h1 {
-            font-size: 2.5rem;
-            color: #ff69b4; /* Różowy nagłówek */
-            font-weight: 600;
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
+        .btn:hover {
+            background: linear-gradient(to right, #8a2be2, #6a5acd);
+            transform: scale(1.05);
         }
-
-        /* Stylizacja treści */
-        p {
-            color: #b17db1;
-            font-size: 1.125rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
     </style>
 </head>
 <body>
-    <div class="container mx-auto p-4">
-        <div class="text-center">
-            <h1>HEJKA KASTII ;33</h1>
-            <p>Z RACJI ZE JESTEM LEKKO AKUSTYCZNY 🙄🙄 <br> TO NIE NAPISALEM LISCIKU, ALE NAPISALEM TO: 😓😓❤️❤️</p>
-            
-            <!-- Link do innego pliku (list.html) -->
-            <a href="list.html">Przejdź do listu</a>
+    <div class="container max-w-md w-full bg-white p-6 rounded-2xl shadow-lg text-center space-y-4">
+        <h1 class="text-2xl font-bold text-purple-700">HEJCIA KICIUS</h1>
+        <p class="text-purple-500 font-semibold">WYBIERZ CO CHCESZ ZOBACZYĆC 🥰🥰</p>
+        
+        <div class="flex flex-col sm:flex-row justify-center items-center sm:space-x-4 space-y-2 sm:space-y-0">
+            <a href="#" class="btn">ZDJECIA <span class="ml-1">😊❤</span></a>
+            <a href="#" class="btn">LISCIKK <span class="ml-1">🥰❤</span></a>
+            <a href="#" class="btn">WIERSZYK <span class="ml-1">😢❤</span></a>
         </div>
     </div>
 </body>
