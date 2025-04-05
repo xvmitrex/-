@@ -1,161 +1,124 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeria Zdjęć</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        /* Tło gradientowe dla strony */
-        body {
-            background: linear-gradient(135deg, #ff80ff 50%, #8a2be2 50%);
-            background-size: 200% 200%;
-            background-position: left center;
-            animation: gradientShift 4s infinite;
-            font-family: 'Arial', sans-serif;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galeria Zdjęć</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff80ff, #8a2be2);
+      animation: gradientShift 6s infinite alternate;
+      background-size: 200% 200%;
+      font-family: 'Segoe UI', sans-serif;
+    }
 
-        /* Animacja przesuwania gradientu */
-        @keyframes gradientShift {
-            0% {
-                background-position: left center;
-            }
-            50% {
-                background-position: right center;
-            }
-            100% {
-                background-position: left center;
-            }
-        }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
 
-        /* Styl dla pustej ramki */
-        .frame {
-            background-color: white;
-            border-radius: 10px;
-            padding: 15px;
-            width: 95%;
-            max-width: 800px; /* Zmniejszona szerokość ramki */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            position: relative;
-        }
+    .gallery {
+      column-count: 3;
+      column-gap: 1.25rem;
+    }
 
-        /* Gradientowy tekst */
-        .frame-text {
-            font-size: 24px;
-            background: linear-gradient(45deg, #ff80ff, #8a2be2);
-            -webkit-background-clip: text;
-            color: transparent;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
+    .gallery img {
+      width: 100%;
+      margin-bottom: 1rem;
+      border-radius: 16px;
+      transition: transform 0.3s ease, filter 0.4s ease;
+      filter: blur(20px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      break-inside: avoid;
+    }
 
-        h2 {
-            font-size: 18px;
-            color: #8a2be2;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
+    .gallery.unblur img {
+      filter: blur(0);
+    }
 
-        /* Nieregularny układ zdjęć */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); /* 3 kolumny na komputerze, zmniejszone zdjęcia */
-            gap: 10px;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
+    .gallery img:hover {
+      transform: scale(1.02);
+    }
 
-        /* Styl zdjęć */
-        .gallery img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-            object-fit: cover;
-            filter: blur(20px); /* Mocniejszy efekt rozmycia */
-        }
+    @media (max-width: 768px) {
+      .gallery {
+        column-count: 1;
+      }
+    }
 
-        /* Powiększenie zdjęć na hover */
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
+    .reveal-button {
+      background: linear-gradient(to right, #6a5acd, #8a2be2);
+      color: white;
+      padding: 10px 22px;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 15px;
+      transition: background 0.3s ease;
+    }
 
-        /* Powiększenie zdjęć po odkryciu */
-        .gallery.unblur img {
-            filter: blur(0);
-        }
-
-        /* Przycisk do odkrywania zdjęć */
-        .reveal-button {
-            background: linear-gradient(to right, #6a5acd, #8a2be2);
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
-            transition: background 0.3s ease;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .reveal-button:hover {
-            background: linear-gradient(to right, #8a2be2, #6a5acd);
-        }
-
-        /* Przycisk do strony głównej i fajnyszczur */
-        .button {
-            background: linear-gradient(to right, #6a5acd, #8a2be2);
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
-            transition: background 0.3s ease;
-            margin-top: 15px;
-        }
-
-        .button:hover {
-            background: linear-gradient(to right, #8a2be2, #6a5acd);
-        }
-
-    </style>
+    .reveal-button:hover {
+      background: linear-gradient(to right, #8a2be2, #6a5acd);
+    }
+  </style>
 </head>
-<body>
-    <div class="frame">
-        <p class="frame-text">KOCHAM CIE KICIUS ❤❤</p>
-        <h2>NASZA MINI GALERIA ZDJEC 🥰🥰</h2>
+<body class="flex justify-center items-start min-h-screen p-6 sm:p-10">
 
-        <!-- Siatka zdjęć -->
-        <div class="gallery">
-            ${Array.from({length: 21}, (_, i) => `<img src="img${i+1}.jpg" alt="Zdjęcie ${i+1}" style="height: 200px;">`).join('\n')}
-        </div>
-
-        <!-- Przycisk do odkrywania zdjęć -->
-        <button class="reveal-button" onclick="revealImages()">ODKRYJ ZDJĘCIA</button>
-
-        <!-- Przyciski na dole -->
-        <a href="pulpit.html"><button class="button">WRÓĆ DO STRONY GŁÓWNEJ</button></a>
-        <a href="fajnyszczur.html"><button class="button">PRZEJDZ DO LISCIKU</button></a>
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-screen-xl px-6 sm:px-10 py-8">
+    <!-- Główne teksty -->
+    <div class="text-center mb-6">
+      <h1 class="text-4xl font-extrabold bg-gradient-to-r from-pink-400 to-purple-700 text-transparent bg-clip-text tracking-wide">
+        KOCHAM CIĘ KICIUS 💖
+      </h1>
+      <p class="text-lg font-semibold text-purple-700 mt-2">NASZA PRZEŚLICZNA GALERIA ZDJĘĆ 🥰</p>
     </div>
 
-    <script>
-        function revealImages() {
-            document.querySelector('.gallery').classList.toggle('unblur');
-            document.querySelector('.reveal-button').style.display = 'none';
-        }
-    </script>
+    <!-- Przycisk u góry -->
+    <div class="flex justify-center mb-6">
+      <button class="reveal-button" onclick="revealImages()">ODKRYJ ZDJĘCIA</button>
+    </div>
+
+    <!-- Galeria -->
+    <div class="gallery" id="gallery">
+      <!-- Zdjęcia 1-22 -->
+      <!-- Umieszczone w jednej kolumnie masonry-style -->
+      <img src="images/img1.jpg" alt="Zdjęcie 1" />
+      <img src="images/img2.jpg" alt="Zdjęcie 2" />
+      <img src="images/img3.jpg" alt="Zdjęcie 3" />
+      <img src="images/img4.jpg" alt="Zdjęcie 4" />
+      <img src="images/img5.jpg" alt="Zdjęcie 5" />
+      <img src="images/img6.jpg" alt="Zdjęcie 6" />
+      <img src="images/img7.jpg" alt="Zdjęcie 7" />
+      <img src="images/img8.jpg" alt="Zdjęcie 8" />
+      <img src="images/img9.jpg" alt="Zdjęcie 9" />
+      <img src="images/img10.jpg" alt="Zdjęcie 10" />
+      <img src="images/img11.jpg" alt="Zdjęcie 11" />
+      <img src="images/img12.jpg" alt="Zdjęcie 12" />
+      <img src="images/img13.jpg" alt="Zdjęcie 13" />
+      <img src="images/img14.jpg" alt="Zdjęcie 14" />
+      <img src="images/img15.jpg" alt="Zdjęcie 15" />
+      <img src="images/img16.jpg" alt="Zdjęcie 16" />
+      <img src="images/img17.jpg" alt="Zdjęcie 17" />
+      <img src="images/img18.jpg" alt="Zdjęcie 18" />
+      <img src="images/img19.jpg" alt="Zdjęcie 19" />
+      <img src="images/img20.jpg" alt="Zdjęcie 20" />
+      <img src="images/img21.jpg" alt="Zdjęcie 21" />
+      <img src="images/img22.jpg" alt="Zdjęcie 22" />
+    </div>
+
+    <!-- Dół – przyciski -->
+    <div class="flex justify-center gap-4 mt-10 flex-wrap">
+      <a href="pulpit.html">
+        <button class="reveal-button">WRÓĆ DO STRONY GŁÓWNEJ</button>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function revealImages() {
+      document.getElementById('gallery').classList.add('unblur');
+      document.querySelector('.reveal-button').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
